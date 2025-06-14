@@ -1,0 +1,17 @@
+{
+  "name": "nextjs-devcontainer",
+  "dockerFile": "../Dockerfile.dev",
+  "service": "nextjs-app",
+  "workspaceFolder": "/app",
+  "dockerComposeFile": "../docker-compose.dev.yml",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/app,type=bind,consistency=cached",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "files.watcherExclude": {
+          "**/node_modules/**": true
+        }
+      }
+    }
+  }
+}

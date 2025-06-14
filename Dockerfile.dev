@@ -1,0 +1,20 @@
+# 開発には Debian slim ベース + ホットリロード
+FROM node:18-slim
+
+
+WORKDIR /app
+
+RUN npm install -g pnpm
+
+# package.jsonとlockファイルだけ先にコピーして依存インストール
+COPY package.json pnpm-lock.yaml* ./
+RUN pnpm install
+
+# ソースコードをコピー
+COPY . .
+
+# ポート公開（Next.js dev: 3000）
+EXPOSE 3000
+
+# devサーバー起動（ホットリロード付き）
+CMD sleep infinity
